@@ -105,7 +105,7 @@ def generateByType(file_name, type):
     built_content = buildContents(wiki_content, type)
     if len(built_content) < 10:
         return
-    generatePDF("random/tlht_"+ str(type) + "_" + str(file_name), built_content)
+    generatePDF("tlht_"+ str(type) + "_" + str(file_name), built_content)
 
 def massGen(type, times):
     log("Mass gen")
