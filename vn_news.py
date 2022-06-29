@@ -42,8 +42,8 @@ def save_image(url):
         return None
 
 def get_summary_of_page():
-    # url = input("Enter the url")
-    page = newspaper.Article("https://vnexpress.net/thu-tuong-anh-noi-g7-tien-gan-hon-toi-thoa-thuan-ukraine-4481508.html", language='vi')
+    url = input("Enter the url")
+    page = newspaper.Article(url, language='vi')
     page.download()
     page.parse()
 
