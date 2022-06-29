@@ -11,7 +11,9 @@ This project is for creating a tool that can do some kinds of actions as the fol
 - Python
 - NLP
 
-## Architechture 
+## Architechture
+
+### Auto gen language contents
 
 ```plantuml
 
@@ -24,3 +26,14 @@ start
 end
 
 ```
+
+### Auto gen news video with text
+
+```plantuml
+start
+- Summarize the contents(Spacy)
+- Convert to audio
+- Simulate in a Video(human or images complition)
+end
+```
+
