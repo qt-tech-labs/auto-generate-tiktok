@@ -8,13 +8,14 @@ from gtts import gTTS
 from moviepy.editor import *
 from moviepy.video.fx.resize import resize
 
-from main import log
-
 import requests
 import os
 
 OUTPUT = "output/"
 IMAGES = "images"
+
+def log(str):
+    print(str)
 
 def delete_images(folder):
     log('Clean the folder: ' + str(folder))
