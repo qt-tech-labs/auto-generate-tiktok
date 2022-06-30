@@ -42,9 +42,9 @@ pydevd*.log
 nodeLanguageServer/**
 nodeLanguageServer.*/**
 dist/**
-output/**
-images/**
-audios/**
+news/output/**
+news/images/**
+news/audios/**
 # translation files
 *.xlf
 *.nls.*.json
