@@ -27,22 +27,23 @@ ydl_opts = {
     'progress_hooks': [my_hook],
     'nocheckcertificate' : True,
     'verbose': 1,
-    'outtmpl': 'output/%(title)s.%(ext)s',
-    'getcomments': True,
-    'writeinfojson': True,
-    'postprocessors': [
-        {
-            'key': 'SponsorBlock', 
-            'categories': ['sponsor']
-        },
-        {
-            'key': 'ModifyChapters', 
-            'remove_sponsor_segments': ['sponsor']
-        }
-    ]
+    'outtmpl': 'videos/%(id)s.%(ext)s',
+    # 'getcomments': True,
+    # 'writeinfojson': True,
+    # 'postprocessors': [
+    #     {
+    #         'key': 'SponsorBlock', 
+    #         'categories': ['sponsor']
+    #     },
+    #     {
+    #         'key': 'ModifyChapters', 
+    #         'remove_sponsor_segments': ['sponsor']
+    #     }
+    # ]
 }
 
-def search_by_text(text, max = 2):
+def search_by_text(text, max = 1):
+    print("Search by " + text)
     results = YoutubeSearch(text, max_results=max).to_dict()
     return results
 
