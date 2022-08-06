@@ -17,6 +17,13 @@ OUTPUT = "output/"
 IMAGES = "images"
 VIDEOS = "videos"
 
+LINKS = [
+    "https://vnexpress.net/nghi-pham-khai-len-ke-hoach-am-sat-ong-abe-tu-mot-nam-truoc-4486605.html",
+    "https://vnexpress.net/doi-an-ninh-bao-ve-ong-abe-la-ai-4485632.html",
+    "https://vnexpress.net/qua-khu-han-thu-cua-nghi-pham-am-sat-ong-abe-4486052.html",
+    "https://vnexpress.net/chien-binh-nuoc-ngoai-vo-mong-o-ukraine-4484866.html"
+]
+
 
 def log(str):
     print(str)
@@ -48,8 +55,9 @@ def save_image(url):
         return None
 
 
-def get_summary_of_page():
-    url = input("Enter the url")
+def get_summary_of_page(url = None):
+    if url is None or url == "":
+        url = input("Enter the url: ")
     page = newspaper.Article(url, language='vi')
     page.download()
     page.parse()
@@ -73,7 +81,7 @@ def compose_video(title, images):
 
     # clip = ImageSequenceClip(images, 2)
 
-    audio = AudioFileClip("audios/news.mp3")
+    audio = AudioFileClip("audios/news.mp3").fx(vfx.speedx, 1.25)
 
     audio_duration = audio.duration
 
@@ -190,8 +198,7 @@ def compose_fr_video(title, file_name):
     aclip.write_videofile(str(OUTPUT) + str(title) +
                           ".mp4", fps=24, audio_codec='aac')
 
-if __name__ == '__main__':
-
+def generate(url):
     try:
         _create_unverified_https_context = ssl._create_unverified_context
     except AttributeError:
@@ -200,7 +207,7 @@ if __name__ == '__main__':
         ssl._create_default_https_context = _create_unverified_https_context
 
     nltk.download('punkt')
-    title, images, videos, summary, keywords = get_summary_of_page()
+    title, images, videos, summary, keywords = get_summary_of_page(url)
     log("Text to speak")
     text_to_speak(summary)
 
@@ -215,7 +222,7 @@ if __name__ == '__main__':
     log("Images to video")
 
     # not enough to create a video from images
-    if len(imgs) < 2:
+    if len(imgs) < 0:
         # load video from yt
         text_search = ' '.join(keywords)
         result = search_by_text(text_search)[0]
@@ -232,4 +239,9 @@ if __name__ == '__main__':
             log('Not any video file!')
     else:
         # 変更しない
-        compose_video(title, imgs)
+        compose_video(title, imgs)                          
+
+if __name__ == '__main__':
+
+    for link in LINKS:
+        generate(link)

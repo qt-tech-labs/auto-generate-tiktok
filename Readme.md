@@ -37,3 +37,12 @@ start
 end
 ```
 
+
+
+## Tu dong them tu vung tieng anh vao anki
+
+ Anki con nect 
+ chrome extention
+
+ auto add a button when the coc coc view is
+

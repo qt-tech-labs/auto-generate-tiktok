@@ -22,7 +22,7 @@ def my_hook(d):
 
 
 ydl_opts = {
-    'format': 'bestvideo[ext=mp4]',
+    'format': 'bv*+ba/b',
     'logger': MyLogger(),
     'progress_hooks': [my_hook],
     'nocheckcertificate' : True,
